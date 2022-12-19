@@ -1,0 +1,13 @@
+services:
+    apache:
+        image: httpd:latest
+        container_name: apache
+        volumes:
+            - ./index.html:/usr/local/apache2/htdocs/index.html
+          # - ./index.html:/devops-champs/docker/index.html
+    client:
+        image: curlimages/curl:latest
+        container_name: curlclient
+        command: sh -c "while :; do curl -s "http://apache" 2>&1; echo \\\ attempting ping; sleep 1; done"
+        depends_on:
+            - apache
