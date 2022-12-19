@@ -4,7 +4,6 @@ services:
         container_name: apache
         volumes:
             - ./index.html:/usr/local/apache2/htdocs/index.html
-          # - ./index.html:/devops-champs/docker/index.html
     client:
         image: curlimages/curl:latest
         container_name: curlclient
